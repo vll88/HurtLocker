@@ -44,10 +44,7 @@ public class HurtLocker {
     }
 
     //fix
-    public String regexGroups(String input)throws Exception{
-
-        //String theRegex = "((\\w*(\\^|\\;|\\:)((\\w*(\\^|\\;|\\:))))(\\w*(\\^|\\;|\\:)(\\d{1,10}\\.\\d{1,10})(\\^|\\;|\\:))" +
-          //      "(\\w*(\\^|\\;|\\:)\\w*(\\^|\\;|\\:))(\\w*(\\^|\\;|\\:)(\\d\\/)(\\d{1,2})(\\/\\d{1,4})))\\#\\#";
+    public String regexGroups(String input)throws Exception {
 
         String theRegex = "((\\w*(\\^|\\;|\\:)((\\w*(\\^|\\;|\\:))))(\\w*(\\^|\\;|\\:)(\\d{1,10}\\.\\d{1,10})(\\^|\\;|\\:))" +
                 "(\\w*(\\^|\\;|\\:)\\w*(\\^|\\;|\\:))(\\w*(\\^|\\;|\\:)(\\d\\/)(\\d{1,2})(\\/\\d{1,4})))\\#\\#";
@@ -58,17 +55,20 @@ public class HurtLocker {
         //String result = IOUtils.toString(classLoader.getResourceAsStream("RawData.txt"));
 
         Matcher matcher = pattern.matcher(input);
-        String item="";
-        String price="";
-        String type="";
-        String expiration="";
-        if(matcher.matches()){
-            item = matcher.group(1);
-            price = matcher.group(2);
-            type = matcher.group(3);
-            expiration = matcher.group(4);
+
+        String item = "";
+        String price = "";
+        String type = "";
+        String expiration = "";
+
+        while (matcher.matches()){
+
+            item += matcher.group(2);
+            price += matcher.group(7);
+            type += matcher.group(11);
+            expiration += matcher.group(14);
         }
-        return "item: "+item+"price: "+price+"type: "+"expiration: "+expiration;
+        return "item: " + item + "price: " + price + "type: " + "expiration: " + expiration;
     }
 
 }
