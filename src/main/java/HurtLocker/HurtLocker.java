@@ -1,5 +1,7 @@
 package HurtLocker;
 
+import org.apache.commons.io.IOUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -42,14 +44,24 @@ public class HurtLocker {
     }
 
     //fix
-    /*
-    public String regexGroups(String input){
+    public String regexGroups(String input)throws Exception{
+
+        //String theRegex = "((\\w*(\\^|\\;|\\:)((\\w*(\\^|\\;|\\:))))(\\w*(\\^|\\;|\\:)(\\d{1,10}\\.\\d{1,10})(\\^|\\;|\\:))" +
+          //      "(\\w*(\\^|\\;|\\:)\\w*(\\^|\\;|\\:))(\\w*(\\^|\\;|\\:)(\\d\\/)(\\d{1,2})(\\/\\d{1,4})))\\#\\#";
+
+        String theRegex = "((\\w*(\\^|\\;|\\:)((\\w*(\\^|\\;|\\:))))(\\w*(\\^|\\;|\\:)(\\d{1,10}\\.\\d{1,10})(\\^|\\;|\\:))" +
+                "(\\w*(\\^|\\;|\\:)\\w*(\\^|\\;|\\:))(\\w*(\\^|\\;|\\:)(\\d\\/)(\\d{1,2})(\\/\\d{1,4})))\\#\\#";
+
+        Pattern pattern = Pattern.compile(theRegex, Pattern.CASE_INSENSITIVE);
+
+        //ClassLoader classLoader = getClass().getClassLoader();
+        //String result = IOUtils.toString(classLoader.getResourceAsStream("RawData.txt"));
 
         Matcher matcher = pattern.matcher(input);
-        String item;
-        String price;
-        String type;
-        String expiration;
+        String item="";
+        String price="";
+        String type="";
+        String expiration="";
         if(matcher.matches()){
             item = matcher.group(1);
             price = matcher.group(2);
@@ -58,6 +70,5 @@ public class HurtLocker {
         }
         return "item: "+item+"price: "+price+"type: "+"expiration: "+expiration;
     }
-    */
 
 }

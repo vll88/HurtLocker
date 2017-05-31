@@ -34,7 +34,7 @@ public class Main {
 
         //checker.regexGroups(checker.resultString);
 
-        //
+        checker.regexGroups(checker.resultString);
 
     }
 
